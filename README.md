@@ -4,12 +4,12 @@
 
 | Column          | Type   | Options     |
 | --------------- | ------ | ----------- |
-| first-name      | string | null: false |
-| last-name       | string | null: false |
-| first-name-kana | string | null: false |
-| last-name-kana  | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana  | string | null: false |
 | email           | string | null: false |
-| nick-name       | string | null: false |
+| nickname       | string | null: false |
 | birthday        | date   | null: false |
 | encrypted-password | string | null: false |
 
@@ -21,10 +21,9 @@
 
 | Column       | Type    | Options     |
 | --------     | ------  | ----------- |
-| item-name    | string  | null: false |
-| category-id  | integer | null: false |
-| price        | numeric | null: false |
-| seller       | text    | null: false |
+| item_name    | string  | null: false |
+| category_id  | integer | null: false |
+| price        | integer | null: false |
 | status_id    | integer | null: false |
 | burden_id    | integer | null: false |
 | area_id      | integer | null: false |
@@ -46,19 +45,19 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping-addresses
+- has_many :shipping-addresses
 
 ## shipping-addresses
 
 | Column          | Type    | Options     |
 | --------------- | ------- | ----------- |
-| postal-code     | string  | null: false |
+| postal_code     | string  | null: false |
 | prefectures_id  | integer | null: false |
 | municipality    | string  | null: false |
 | address         | string  | null: false |
-| building-name   | string  |             |
-| phone-number    | numeric  | null: false |
-
+| building_name   | string  |             |
+| phone_number    | numeric  | null: false |
+| purchase        | references|null: false foreign_key: true|
 ### Association
 
 -belongs_to purchases
