@@ -10,7 +10,7 @@
 | last-name-kana  | string | null: false |
 | email           | string | null: false |
 | nick-name       | string | null: false |
-| birthday        | numeric | null: false |
+| birthday        | date   | null: false |
 | encrypted-password | string | null: false |
 
 ### Association
@@ -24,7 +24,7 @@
 | item-name    | string  | null: false |
 | category-id  | integer | null: false |
 | price        | numeric | null: false |
-| seller       | string  | null: false |
+| seller       | text    | null: false |
 | status_id    | integer | null: false |
 | burden_id    | integer | null: false |
 | area_id      | integer | null: false |
@@ -46,6 +46,7 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :shipping-addresses
 
 ## shipping-addresses
 
@@ -59,3 +60,5 @@
 | phone-number_id  | integer | null: false |
 
 ### Association
+
+-belongs_to purchases
