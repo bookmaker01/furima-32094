@@ -52,12 +52,12 @@
 
 | Column          | Type    | Options     |
 | --------------- | ------- | ----------- |
-| postal-code_id  | integer | null: false |
+| postal-code     | string  | null: false |
 | prefectures_id  | integer | null: false |
-| municipality_id | integer | null: false |
-| address_id      | integer | null: false |
-| building-name_id | integer |             |
-| phone-number_id  | integer | null: false |
+| municipality    | string  | null: false |
+| address         | string  | null: false |
+| building-name   | string  |             |
+| phone-number    | numeric  | null: false |
 
 ### Association
 
