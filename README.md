@@ -9,6 +9,8 @@
 | first-name-kana | string | null: false |
 | last-name-kana  | string | null: false |
 | email           | string | null: false |
+| nick-name       | string | null: false |
+| birthday        | numeric | null: false |
 | encrypted-password | string | null: false |
 
 ### Association
@@ -37,8 +39,8 @@
 
 | Column       | Type       | Options     |
 | ------------ | ------     | ----------- |
-| item-id      | references | null: false foreign_key: true|
-| user-id      | references | null: false foreign_key: true|
+| item         | references | null: false foreign_key: true|
+| user         | references | null: false foreign_key: true|
 
 ### Association
 
@@ -47,13 +49,13 @@
 
 ## shipping-addresses
 
-| Column       | Type   | Options     |
-| --------     | ------ | ----------- |
-| postal-code  | string | null: false |
-| prefectures  | string | null: false |
-| municipality | string | null: false |
-| address      | string | null: false |
-| building-name| string |             |
-| phone-number | string | null: false |
+| Column          | Type    | Options     |
+| --------------- | ------- | ----------- |
+| postal-code_id  | integer | null: false |
+| prefectures_id  | integer | null: false |
+| municipality_id | integer | null: false |
+| address_id      | integer | null: false |
+| building-name_id | integer |             |
+| phone-number_id  | integer | null: false |
 
 ### Association
