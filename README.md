@@ -11,7 +11,7 @@
 | email           | string | unique: true |
 | nickname        | string | null: false |
 | birthday        | date   | null: false |
-| encrypted-password | string | null: false |
+| encrypted_password | string | null: false |
 
 ### Association
 
@@ -34,6 +34,7 @@
 ### Association
 
 - belongs_to :user
+- has_one :item
 
 ## purchases
 
@@ -46,7 +47,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping-addresses
+- has_one :shipping＿address
 
 ## shipping-addresses
 
@@ -61,4 +62,4 @@
 | purchase        | references|null: false foreign_key: true|
 ### Association
 
--belongs_to purchases
+-belongs_to ：purchase
