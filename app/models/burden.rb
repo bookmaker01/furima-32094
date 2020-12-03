@@ -1,5 +1,5 @@
 class Burden < ApplicationRecord
-  class Genre < ActiveHash::Base
+  class Burden < ActiveHash::Base
     self.data = [
       { id: 1, name: '--' },
       { id: 2, name: '経済' },
