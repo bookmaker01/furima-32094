@@ -20,6 +20,11 @@ describe User do
        @user.valid?
        expect(@user.errors.full_messages).to include("Email can't be blank")
      end
+     it "emailに@が含まれていない場合登録できない" do
+      @user.email = "aaaaaaaa"
+       @user.valid?
+       expect(@user.errors.full_messages).to include("Email is invalid")
+     end
      it "重複したemailが存在する場合登録できないこと" do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
@@ -43,7 +48,7 @@ describe User do
        expect(@user.errors.full_messages).to include("Password is invalid. Input half-width characters.")
      end
      it "passwordが半角数字のみの場合登録できない" do
-      @user.password = "123456"
+      @user.password = 123456
        @user.valid?
        expect(@user.errors.full_messages).to include("Password is invalid. Input half-width characters.")
      end
