@@ -19,7 +19,7 @@ class Item < ApplicationRecord
   belongs_to :category 
   belongs_to :guideline 
   belongs_to :status
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 0 } do
   validates :area_id
   validates :burden_id
   validates :category_id
