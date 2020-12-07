@@ -4,8 +4,10 @@ describe Item do
     @item = FactoryBot.build(:item)
   end
   describe '商品出品' do
+    context '出品ができるとき' do
     it '出品できる時' do
       expect(@item).to be_valid
+    end
     end
     context '出品ができないとき' do
       it '商品画像を1枚つけることが必須であること' do
@@ -59,7 +61,7 @@ describe Item do
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it '299以下であれば保存できない' do
-        @item.price = 100
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
