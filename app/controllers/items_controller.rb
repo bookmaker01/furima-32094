@@ -1,15 +1,26 @@
 class ItemsController < ApplicationController
-  skip_before_action :authenticate_user!
-def index
-end
+  before_action :authenticate_user!, except: [:index]
+  # def index
+  # @item = Item.all
 
-def destroy
-  #if @item.destroy
-    #redirect_to root_path
-  #else
-    #redirect_to root_path
-  #end
-end
+  # end
 
-end
+  def new
+    @item = Item.new
+  end
 
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :image, :category_id, :price, :status_id, :burden_id, :area_id, :guideline_id, :explanation).merge(user_id: current_user.id)
+  end
+end
