@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one_attached :order
+  has_one :order
   has_one_attached :image
   validates_inclusion_of :price, in: 300..9_999_999
   with_options presence: true do
