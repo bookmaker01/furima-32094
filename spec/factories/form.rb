@@ -4,7 +4,10 @@ FactoryBot.define do
     prefectures_id { 1 }
     municipality { "ああ" }
     address  { "aa" }
-    phone_number { "12345678"}
+    phone_number { "12345678901"}
+    building_name {"ビル"}
+    token {"200"}
+    
     # association  :item
     # order_id {order.id}
   end

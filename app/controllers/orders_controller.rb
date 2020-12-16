@@ -8,9 +8,7 @@ def index
   @form =Form.new
 end
 
-def new
-@form =Form.new
-end
+
 
 def create
   @form = Form.new(order_params)   

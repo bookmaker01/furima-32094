@@ -1,24 +1,35 @@
 require 'rails_helper'
 describe Order do
   before do
-    # seller = "出品者の情報"
-    # buyer = "購入者の情報"
-    # item = 
-    @order = FactoryBot.build(:form)
+    seller = FactoryBot.create(:user)
+    buyer = FactoryBot.create(:user, email: "abc@com")
+    item = FactoryBot.create(:item , user_id: buyer.id)
+    @order = FactoryBot.build(:form, user_id: seller.id, item_id: item.id)
+    sleep (0.5)
   end
   describe '商品購入' do
     context '購入ができるとき' do
     it '購入できる時' do
       expect(@order).to be_valid
     end
+    it '建物名がなくても購入できる' do
+      @order.building_name = ''
+      expect(@order).to be_valid
+    end
   end
     context '出品ができないとき' do
-      it '郵便番号が必須であることかつハイフンが入っている事' do
+      it '郵便番号が必須である事' do
         @order.postal_code = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
+        expect(@order.errors.full_messages).to include("Postal code can't be blank")
       end
-      it '都道府県が必須であること' do
+      it '郵便番号にハイフンが入っている事' do
+        @order.postal_code = '1234567'
+        @order.valid?
+        expect(@order.errors.full_messages).to include( "Postal code is invalid. Include hyphen(-)")
+      end
+
+      it '都道府県が0では購入出来ない' do
         @order.prefectures_id = 0
         @order.valid?
         expect(@order.errors.full_messages).to include( "Prefectures can't be blank")
@@ -33,10 +44,15 @@ describe Order do
         @order.valid?
         expect(@order.errors.full_messages).to include("Address can't be blank")
       end
-      it '電話番号が必須であることかつハイフンがある事' do
+      it '電話番号が必須である事' do
         @order.phone_number = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid. Include hyphen(-)")
+        expect(@order.errors.full_messages).to include("Phone number can't be blank")
+      end
+      it '電話番号が11桁である事' do
+        @order.phone_number = '1234567890'
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Phone number is invalid. must be 11charcters")
       end
     end
     end

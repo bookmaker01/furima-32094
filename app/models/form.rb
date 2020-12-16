@@ -6,8 +6,10 @@ class Form
   validates :municipality
   validates :address
   validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/, message: "is invalid. Include hyphen(-)"}
-  validates :phone_number,format: {with: /\A[a-zA-Z0-9]+\z/, message: "is invalid. Include hyphen(-)"}
-  #validates :token
+  validates :phone_number,format: {with: /\A\d{11}\z/, message:"is invalid. must be 11charcters"}
+  validates :token
+  validates :user_id
+  validates :item_id
 end
   validates :prefectures_id, numericality: { other_than: 0, message: "can't be blank" }
   def save
