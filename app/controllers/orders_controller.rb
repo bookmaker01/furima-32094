@@ -13,7 +13,7 @@ end
 def create
   @form = Form.new(order_params)   
    if @form.valid?
-    Payjp.api_key = "sk_test_48d80d33fafada7a820920bf"  
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
     Payjp::Charge.create(
       amount: @item.price,  
       card: order_params[:token],    
