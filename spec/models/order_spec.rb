@@ -52,12 +52,27 @@ describe Order do
       it '電話番号が11桁である事' do
         @order.phone_number = '1234567890'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid. ")
+        expect(@order.errors.full_messages).to include("Phone number is invalid.")
       end
       it '電話番号が英数混合では登録できないこと' do
         @order.phone_number = '1234567890a'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid. ")
+        expect(@order.errors.full_messages).to include("Phone number is invalid.")
+      end
+      it 'tokenが必須である事' do
+        @order.token = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが必須である事' do
+        @order.user_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが必須である事' do
+        @order.item_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
       end
     end
     end
