@@ -8,7 +8,6 @@ FactoryBot.define do
     building_name {"ビル"}
     token {"200"}
     
-    # association  :item
-    # order_id {order.id}
+
   end
 end
